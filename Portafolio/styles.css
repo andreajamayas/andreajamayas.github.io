@@ -205,6 +205,12 @@
     transition: all 0.3s linear;
 }
 
+@media screen and (max-width: 767px){
+    .article {
+        height: 40vh;
+    }
+}
+
 .post-img {
     background: url(https://images.pexels.com/photos/947384/pexels-photo-947384.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
     width: 100%;
