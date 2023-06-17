@@ -31,7 +31,7 @@
     justify-content: center;
     background-color: #654E92;
     color: white;
-    height: 15vh;
+    height: auto;
     text-align: center;
 }
 
@@ -207,7 +207,7 @@
 
 @media screen and (max-width: 767px){
     .article {
-        height: 40vh;
+        height: auto;
     }
 }
 
