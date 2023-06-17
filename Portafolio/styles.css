@@ -43,16 +43,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #D4ADFC;
+    /* background-color: #D4ADFC; */
+    background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.2)), url(https://img.freepik.com/free-vector/purple-gradient-technology-background_23-2149118850.jpg);
+    background-size: cover;
     height: 90vh;
     width: auto;
-    color: #654E92;
+    color: white;
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .home-presentacion h1,.home-presentacion h2,.home-presentacion p{
-    background-color: white;
     border-radius: 5px;
     padding: 2px;
 }
@@ -99,6 +100,9 @@
     padding: 20px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
+    background-color: #D4ADFC;
+    /* background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.2)), url(https://img.freepik.com/free-vector/purple-gradient-technology-background_23-2149118850.jpg);
+    background-size: cover; */
 }
 @media screen and (max-width: 767px){
     .container-hv {
@@ -110,6 +114,7 @@
 }
 .elemento-hv {
     text-align: center;
+    background-color: white;
     font-size:1em;
     border-radius:4px;
     border:1px solid #bbb;
@@ -124,14 +129,19 @@
 
 /*---------------------------- PORTAFOLIO -----------------------------*/
 /* Descripción del portafolio*/
+.portafolio-cover{
+    background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.2)), url(https://img.freepik.com/free-vector/purple-gradient-technology-background_23-2149118850.jpg);
+    background-size: cover;
+}
 .portafolio-main {
-    background-color: white;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 50vh;
     padding: 20px;
+    color:white;
 }
 @media screen and (max-width: 767px){
     .portafolio-main {
@@ -147,13 +157,15 @@
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    background-color: white;
+    background-color: #D4ADFC;
     padding: 5px;
 }
 .proyecto {
     font-size: 5em;
     text-align: center;
     background-color: #D4ADFC;
+    background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.2)), url(https://c4.wallpaperflare.com/wallpaper/632/34/549/technology-monitor-alpha-coders-binary-wallpaper-preview.jpg);
+    background-size: cover;
 }
 .zone {
     cursor:pointer;
@@ -171,6 +183,10 @@
 }
 
 /* -----------------------------BLOG ------------------------------------------*/
+.containerPrincipal-blog{
+    background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.2)), url(https://img.freepik.com/free-vector/purple-gradient-technology-background_23-2149118850.jpg);
+    background-size: cover;
+}
 .container-blog {
     padding: 10px;
     display: flex;
@@ -180,7 +196,7 @@
 .h1-blog {
     font-family: fantasy;
     font-size: 3em;
-    color: #654E92;
+    color: white;
     width: auto;
     text-align: center;
 }
@@ -191,12 +207,13 @@
     justify-content: center;
     padding: 10px;
     flex-wrap: wrap;
-    
 }
 
 .article {
+    background-color: white;
     width: 300px;
     margin: 10px;
+    border-radius: 5px;
     height: 50vh;
     -webkit-box-shadow:rgba(0,0,0,0.2) 0px 5px 15px, inset rgba(0,0,0,0.10) 0px -10px 20px;
     -moz-box-shadow:rgba(0,0,0,0.2) 0px 5px 15px, inset rgba(0,0,0,0.10) 0px -10px 20px;
@@ -213,6 +230,7 @@
 
 .post-img {
     background: url(https://images.pexels.com/photos/947384/pexels-photo-947384.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+    background-size: cover;
     width: 100%;
     height: 100px;
     border-top-left-radius: 5px;
@@ -242,12 +260,14 @@
     align-items: center;
     justify-content: space-evenly;
     height:90vh ;
-    background-color: #D4ADFC;
+    /* background-color: #D4ADFC; */
+    background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.2)), url(https://img.freepik.com/free-vector/purple-gradient-technology-background_23-2149118850.jpg);
+    background-size: cover;
 }
 .contacto-mensaje{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 40px;
-    color: #654E92;
+    color: white;
 }
 .contacto-form{
     padding: 5px;
@@ -256,7 +276,7 @@
     align-items: center;
     height: 50vh;
     justify-content: center;
-    background-color: #654E92;
+    background-color: #D4ADFC;
     border-color: #654E92;
     border-radius: 5px;
     -webkit-box-shadow:rgba(0,0,0,0.2) 0px 5px 15px, inset rgba(0,0,0,0.10) 0px -10px 20px;
@@ -278,7 +298,6 @@
 }
 .form-mensaje2 {
     text-decoration: underline;
-    color:white;
 }
 .boton-enviar {
     background-color: #641b6e;
