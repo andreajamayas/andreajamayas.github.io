@@ -170,6 +170,7 @@
     background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.2)), url(https://c4.wallpaperflare.com/wallpaper/632/34/549/technology-monitor-alpha-coders-binary-wallpaper-preview.jpg);
     background-size: cover;
     height: 20vh;
+    margin: 20px;
 }
 .zone {
     cursor:pointer;
