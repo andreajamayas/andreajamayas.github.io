@@ -1,0 +1,238 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BARRA DE NAVEGACIÓN */
+.container-fluid {
+    background-color: white !important;
+  }
+  .container-fluid a {
+    color: black !important;
+  }
+  .container-fluid a:hover {
+    color: #1A5D1A !important;
+  }
+  
+  .navbar-expand-lg, .bg-body-tertiary {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  
+  .logoNavBar {
+    width: 50px;
+  }
+
+/* FOOTER */
+
+.footer {
+  width: 100%;
+  height: auto;
+  min-height: 50vh;
+  background-color: #263A29;
+}
+
+.derechos {
+  text-align: center;
+  color: white;
+  padding: 10px;
+  margin: 0;
+}
+
+.footer-contenedor {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+.footer-segmento {
+  text-align: center;
+}
+
+
+
+/* MAIN HOME */
+
+.main-home {
+    width: 100%;
+    height: auto;
+    min-height: 90vh;
+    background-color: #EEEDED;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 50px 8% 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-home-description {
+    max-width: 100vh;
+}
+
+.main-home-description h1 {
+    color: #82CD47;
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+.main-home-description h3 {
+    color: #1A5D1A;
+    
+}
+
+@media screen and (max-width: 500px) {
+    .main-home-imagen img {
+      width: 40vh;
+    }
+  }
+
+
+/* CATEGORIAS */
+
+.home-categorias {
+  width: 100%;
+  height: auto;
+  min-height: 80vh;
+  text-align: center;
+  background-color: white;
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url(https://static.vecteezy.com/system/resources/previews/001/270/574/non_2x/green-color-comic-book-pop-art-strip-radial-backdrop-vector.jpg); */
+  background-size: cover;
+  padding: 20px;
+
+}
+
+.home-categorias h2 {
+  color: #1A5D1A;
+  padding-top: 20px;
+  font-family: 'Didact Gothic', sans-serif;
+}
+
+.main-categorias {
+  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.categoria {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Courier New', Courier, monospace;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: #C9DBB2;
+}
+
+
+.img-categoria {
+  border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+/* Mosaico de Productos */
+
+.layout-productos {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    background-color: white;
+    padding: 5px;
+}
+
+.producto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    color: white;
+    font-family: fantasy;
+    background-size: cover;
+    height: 20vh;
+    margin: 20px;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+
+/*** ESTILOS BOTÓN SLIDE LEFT ***/
+
+.ov-btn-slide-left {
+  background: #fff; /* color de fondo */
+  color: #82CD47; /* color de fuente */
+  border: 2px solid #82CD47; /* tamaño y color de borde */
+  padding: 10px 20px;
+  border-radius: 3px; /* redondear bordes */
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  margin-top: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.ov-btn-slide-left:hover {
+  color: #fff; /* color de fuente hover */
+}
+.ov-btn-slide-left::after {
+  content: "";
+  background: #82CD47; /* color de fondo hover */
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+  right: 100%;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.ov-btn-slide-left:hover::after {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+
+
+/* EFECTO ZONE */
+
+.zone {
+  cursor: pointer;
+  /* display:inline-block; */
+  text-align: center;
+  /* border:1px solid #bbb; */
+  transition: all 0.3s linear;
+}
+.zone:hover {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px, inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px, inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+  -o-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px, inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+  box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px, inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+}
