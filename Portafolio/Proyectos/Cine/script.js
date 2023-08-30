@@ -1,4 +1,6 @@
 
+// Aquí se crea un primer array de objetos para que el programa pueda funcionar
+
 let dbFunciones = [
     {
         pelicula : "Barbie",
@@ -43,6 +45,8 @@ let dbFunciones = [
 
 ];
 
+// Se declaran las variables principales del programa
+
 let arrPeliculas = ["Barbie", "Avengers", "Flash"];
 let arrFunciones = [];
 let nombre = "";
@@ -75,6 +79,7 @@ function pushFunciones() {
 pushFunciones();
 nombre = prompt("Ingrese su nombre para continuar");
 
+// esta es la funcion principal donde arranca el programa y decidimos que queremos hacer
 function initProgram() {
     while (trueOrFalse) {
         let selectSection = parseInt(prompt(
@@ -95,6 +100,7 @@ function initProgram() {
     }     
 }
 
+// En verCartelera podemos ver el listado de pelicuals disponibles para ver
 function verCartelera() {
     cartelera = "";
     i=0;
@@ -106,11 +112,13 @@ function verCartelera() {
     filtrarFuncionesPelicula(arrPeliculas[pelicula]);
 }
 
+// esta función permite ver las funciones (horarios) disponibles de la pelicula seleccionada
 function filtrarFuncionesPelicula(pelicula) {
     let funcionesDisponibles = arrFunciones.filter(fun => fun.pelicula === pelicula);
     alert(funcionesDisponibles.map(elm => elm.horaInicio));
 }
 
+// esta funcion permite ver todas las funciones disponibles sin ninguna clase de filtro (es algo que tengo que arreglar para que todo quede con la anterior)
 function verFunciones() {
     let funciones = "";
     let i= 0;
@@ -121,6 +129,7 @@ function verFunciones() {
     return funciones;   
 }
 
+// esta función nos permite ver el listado de sillas de la función seleccionada y si la silla se encuentra ocupada o disponible
 function verSillas(numFuncion) {
     let sillas = "";
     i=0;
@@ -135,6 +144,7 @@ function verSillas(numFuncion) {
     return sillas;
 }
 
+// esta función nos permite validar si la función de cine ya está llena o si aún quedan sillas disponibles
 function validarFuncionCompleta(numFuncion) {
     let resultado = false;
     if (arrFunciones[numFuncion].cantSillasOcupadas == arrFunciones[numFuncion].cantSillas) {
@@ -144,6 +154,7 @@ function validarFuncionCompleta(numFuncion) {
     return resultado;
 }
 
+// esta función nos permite ocupar una silla cuando esta se encuentra disponible, y de igual manera, va sumando el precio de las boletas
 function ocuparSilla(numFuncion, numSilla) {
     if (arrFunciones[numFuncion].arraySillas[numSilla] == true) {
         alert("Esta silla ya está ocupada");
@@ -160,6 +171,7 @@ function ocuparSilla(numFuncion, numSilla) {
 
 }
 
+// esta función consulta al cliente si desea reservar otra silla
 function reservarOtraSilla(){
     let resultado = false;
     let reservar = prompt("¿Desea reservar otra silla?\n0.Si\n1.No");
@@ -169,11 +181,13 @@ function reservarOtraSilla(){
     return  resultado;
 }
 
+// esta función nos da un resumen de la compra, como lo es el nombre del cliente, pelicula seleccionada y sillas escogidas
 function verDetalleCompra(numFuncion, sillasReservadas) {
     alert("Este es el detalle de su compra \nNombre: " + nombre +"\nFunción reservada: " + arrFunciones[numFuncion].pelicula + "\nSillas reservadas: " + sillasReservadas + "\nTotal a pagar: " + costoTotal);
 
 }
 
+// esta es la función principal que nos permite seleccionar que silla queremos reservar
 function reservarSillas() {
     let reservarOtra = true;
     let funciones = verFunciones();
