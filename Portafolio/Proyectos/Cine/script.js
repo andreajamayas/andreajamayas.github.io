@@ -48,6 +48,8 @@ let arrFunciones = [];
 let nombre = "";
 let funcionReservada = 0;
 let sillasReservadas = [];
+let costoBoleta = 10;
+let costoTotal = 0;
 trueOrFalse = true;
 
 class Funciones {
@@ -76,17 +78,37 @@ nombre = prompt("Ingrese su nombre para continuar");
 function initProgram() {
     while (trueOrFalse) {
         let selectSection = parseInt(prompt(
-            "¿Qué quieres hacer? \n 1. reservar Sillas \n 2. Salir "
+            "¿Qué quieres hacer? \n 1. Ver cartelera \n 2. reservar Sillas \n 3. Salir "
         ));
         
         switch (selectSection) {
             case 1:
-                reservarSillas();
+                verCartelera();
+                break;
             case 2:
+                reservarSillas();
+                break;
+            case 3:
                 trueOrFalse = false;
                 break;        
         }
     }     
+}
+
+function verCartelera() {
+    cartelera = "";
+    i=0;
+    arrPeliculas.forEach((elm) => {
+        cartelera += i + ". " + elm + "\n";
+        i++;
+    })
+    pelicula = prompt("esta es la cartelera:\n" + cartelera + "\n seleccione el número de la película de la que desea ver los horarios de las funciones");
+    filtrarFuncionesPelicula(arrPeliculas[pelicula]);
+}
+
+function filtrarFuncionesPelicula(pelicula) {
+    let funcionesDisponibles = arrFunciones.filter(fun => fun.pelicula === pelicula);
+    alert(funcionesDisponibles.map(elm => elm.horaInicio));
 }
 
 function verFunciones() {
@@ -131,6 +153,7 @@ function ocuparSilla(numFuncion, numSilla) {
         arrFunciones[numFuncion].cantSillasOcupadas++;
         arrFunciones[numFuncion].arrayOcupantes[numSilla] = nombre;
         sillasReservadas.push(numSilla);
+        costoTotal += costoBoleta;
 
         alert("Silla reservada con exito");
     }
@@ -147,7 +170,7 @@ function reservarOtraSilla(){
 }
 
 function verDetalleCompra(numFuncion, sillasReservadas) {
-    alert("Este es el detalle de su compra \nNombre: " + nombre + "\nFunción reservada: " + arrFunciones[numFuncion].pelicula + "\nSillas reservadas: " + sillasReservadas)
+    alert("Este es el detalle de su compra \nNombre: " + nombre +"\nFunción reservada: " + arrFunciones[numFuncion].pelicula + "\nSillas reservadas: " + sillasReservadas + "\nTotal a pagar: " + costoTotal);
 
 }
 
