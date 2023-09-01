@@ -175,6 +175,11 @@
   margin: 20px;
 }
 
+.proyecto a {
+  color: white;
+  text-decoration: none;
+}
+
 .zone {
   cursor: pointer;
   /* display:inline-block; */
