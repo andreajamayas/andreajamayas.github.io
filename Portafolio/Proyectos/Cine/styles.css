@@ -104,7 +104,7 @@
     height: auto;
     min-height: 80vh;
     text-align: center;
-    background-color: white;
+    background-color: #EEEDED;
     /* background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url(https://static.vecteezy.com/system/resources/previews/001/270/574/non_2x/green-color-comic-book-pop-art-strip-radial-backdrop-vector.jpg); */
     background-size: cover;
     padding: 20px;
@@ -140,6 +140,10 @@
   .cartelera p {
     color: white;
     padding-top: 10px;
+  }
+
+  .img-cartelera {
+    width: 200px;
   }
 
 
@@ -384,4 +388,9 @@
     -moz-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px, inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
     -o-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px, inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
     box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px, inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+  }
+
+
+  .ocultar {
+    display: none;
   }

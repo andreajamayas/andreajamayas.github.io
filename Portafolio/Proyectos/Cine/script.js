@@ -1,5 +1,5 @@
 
-// Aquí se crea un primer array de objetos para que el programa pueda funcionar
+// Aquí se cargan los datos principales con los que trabaja el programa, que son la cartelera y las funciones disponibles
 
 let dbFunciones = [
     {
@@ -45,9 +45,127 @@ let dbFunciones = [
 
 ];
 
-// Se declaran las variables principales del programa
+const enJSON = JSON.stringify(dbFunciones);
+// const dbFunciones = JSON.parse(enJSON);
 
-let arrPeliculas = ["Barbie", "Avengers", "Flash"];
+let arrPeliculas = [
+    {
+        nombre:"Barbie",
+        resumen:"Barbie (Margot Robbie) lleva una vida ideal en Barbieland, allí todo es perfecto, con chupi fiestas llenas de música y color, y todos los días son el mejor día. Claro que Barbie se hace algunas preguntas, cuestiones bastante incómodas que no encajan con el mundo idílico en el que ella y las demás Barbies viven. Cuando Barbie se dé cuenta de que es capaz de apoyar los talones en el suelo, y tener los pies planos, decidirá calzarse unos zapatos sin tacones y viajar hasta el mundo real.",
+        linkImg:"https://es.web.img2.acsta.net/pictures/23/07/20/11/29/5479684.jpg"
+    }, 
+    {
+        nombre:"Avengers",
+        resumen:"El equipo de superhéroes más espectacular de todos los tiempos con iconos como Anthony Stark / Iron Man, El Increíble Hulk, Thor, Steven Rogers / Capitán América, Clinton Barton / Hawkeye y Natalia Romanoff / Black Widow. Cuando un enemigo inesperado amenaza con poner en peligro la seguridad mundial, Nicholas Fury, Director de la agencia internacional para el mantenimiento de la paz, conocida con el nombre de S.H.I.E.L.D., necesita encontrar urgentemente un equipo que salve al mundo del mayor de los desastres. Así empieza una búsqueda por todo el mundo para reclutar personal.",
+        linkImg:"https://hips.hearstapps.com/hmg-prod/images/vengadores-la-era-de-ultro-n-1525787731.jpg"
+    }, 
+    {
+        nombre:"Flash",
+        resumen:"Los mundos chocan en Flash cuando Barry utiliza sus superpoderes para viajar en el tiempo y cambiar los acontecimientos del pasado. Barry intenta salvar a su familia pero sin saberlo altera el futuro y queda atrapado en una realidad en la que el general Zod ha regresado y amenaza con la aniquilación, pero en la que no hay Superhéroes a los que recurrir. A menos que Barry pueda persuadir a un Batman muy diferente para que salga de su retiro y rescate a un kryptoniano encarcelado... aunque no sea el que está buscando. En última instancia, para salvar el mundo en el que se encuentra y regresar al futuro que conoce, la única esperanza de Barry es luchar por seguir vivo. Pero ¿este último sacrificio será suficiente para reiniciar el universo?.",
+        linkImg:"https://images2.prokal.co/webkp/file/berita/2023/06/21/c6ed767f1016f657fedd75cadde11751.jpg"
+    }];
+
+// Se modifica el DOM de la página principal con las peliculas cargadas
+let carteleraDom = document.querySelector(".main-cartelera");
+let funcionesDom = document.querySelector(".home-funciones");
+
+function renderizarCartelera() {
+    arrPeliculas.forEach( (elm) => {
+        // estructura
+        const miNodo = document.createElement('div');
+        miNodo.classList.add('cartelera','zone');
+        // imagen
+        const miNodoImg = document.createElement('img');
+        miNodoImg.classList.add('img-cartelera');
+        miNodoImg.setAttribute('src', elm.linkImg);
+        // pelicula
+        const miNodoNombre = document.createElement('p');
+        miNodoNombre.textContent = `${elm.nombre}`;
+        // boton
+        miNodoBoton = document.createElement('button');
+        miNodoBoton.classList.add('ov-btn-slide-left');
+        miNodoBoton.setAttribute('marcador', elm.nombre);
+        // miNodoBoton.setAttribute('onclick', 'location.href="funciones.html"');
+        miNodoBoton.innerHTML = 'Ver funciones';
+        miNodoBoton.addEventListener("click", renderizarFuncionesDisponibles);
+        // insertamos
+        miNodo.appendChild(miNodoImg);
+        miNodo.appendChild(miNodoNombre);
+        miNodo.appendChild(miNodoBoton);
+        carteleraDom.appendChild(miNodo);
+    });
+};
+
+renderizarCartelera();
+let mainHome = document.querySelector('.main-home');
+let mainCartelera = document.querySelector('.home-cartelera');
+let botonCartelera = document.querySelector('.habilitar-cartelera');
+botonCartelera.addEventListener('click', () => {
+    mainHome.classList.add('ocultar');
+    mainCartelera.classList.remove('ocultar');
+
+});
+
+// Se modifica el DOM de la pagina que muestra la descripción de la pelicula seleccionada
+// añadimos el evento que reconoce que pelicula seleccionó el usuario
+function renderizarFuncionesDisponibles(evento) {
+    funcionesDom.classList.remove('ocultar');
+    mainCartelera.classList.add('ocultar');
+    funcionesDom.innerHTML="";
+    pelicula = evento.target.getAttribute('marcador');
+    let buscado = arrPeliculas.find(elm => elm.nombre === pelicula);
+
+    //buscar funciones de esa pelicula en la base de datos
+    let funcionesBuscadas = arrFunciones.filter( elm => elm.pelicula === pelicula);
+    console.log(funcionesBuscadas);
+
+    const miNodoImg = document.createElement('div');
+    miNodoImg.classList.add('main-funciones-imagen');
+    const miImg = document.createElement('img');
+    miImg.setAttribute('src', buscado.linkImg);
+    miNodoImg.appendChild(miImg);
+
+    const miNodo = document.createElement('div');
+    miNodo.classList.add('main-home-funciones');
+    const miNodoNombre = document.createElement('h3');
+    miNodoNombre.innerHTML = buscado.nombre;
+    const miNodoResumen = document.createElement('p');
+    miNodoResumen.innerHTML = buscado.resumen;
+    miNodo.appendChild(miNodoNombre);
+    miNodo.appendChild(miNodoResumen);
+
+    
+
+     // se renderizan las funciones disponibles de la pelicula seleccionada
+    funcionesBuscadas.forEach( (elm) => {
+        const miNodoFuncion = document.createElement('button');
+        miNodoFuncion.classList.add('ov-btn-slide-left');
+        miNodoFuncion.innerText = elm.horaInicio;
+        miNodoFuncion.addEventListener("click", mostrarSillas);
+        miNodo.appendChild(miNodoFuncion);
+    })
+
+    funcionesDom.appendChild(miNodoImg);
+    funcionesDom.appendChild(miNodo);
+    
+};
+
+let contenedorSillas = document.querySelector('.home-sillas');
+
+function mostrarSillas(evento) {
+    contenedorSillas.classList.remove('ocultar');
+
+};
+
+
+
+
+
+
+
+
+// Se declaran las variables del programa
+    
 let arrFunciones = [];
 let nombre = "";
 let funcionReservada = 0;
@@ -77,7 +195,14 @@ function pushFunciones() {
   }
 
 pushFunciones();
-nombre = prompt("Ingrese su nombre para continuar");
+// nombre = prompt("Ingrese su nombre para continuar");
+
+// Se declaran los eventos necesarios para el funcionamiento del programa
+
+
+
+
+
 
 // esta es la funcion principal donde arranca el programa y decidimos que queremos hacer
 function initProgram() {
@@ -102,8 +227,8 @@ function initProgram() {
 
 // En verCartelera podemos ver el listado de pelicuals disponibles para ver
 function verCartelera() {
-    cartelera = "";
-    i=0;
+    let cartelera = "";
+    let i=0;
     arrPeliculas.forEach((elm) => {
         cartelera += i + ". " + elm + "\n";
         i++;
@@ -211,4 +336,4 @@ function reservarSillas() {
 }
 
 
-initProgram();
+// initProgram();

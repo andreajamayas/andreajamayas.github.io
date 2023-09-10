@@ -27,12 +27,13 @@
           </div>
         </div>
     </nav>
+
     <div class="main-home">
         <div class="main-home-description">
             <h1>Cinemania</h1>
             <h3>¡Encuentra tus estrenos favoritos!</h3>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt nemo quaerat cumque reiciendis quos asperiores, ipsam aspernatur natus odit enim magnam voluptatem nam reprehenderit at, deleniti in debitis soluta vero!</p>
-            <button class="ov-btn-slide-left" onclick="location.href='#home-cartelera'">Ver cartelera</button>
+            <button class="ov-btn-slide-left habilitar-cartelera" onclick="location.href='#home-cartelera'">Ver cartelera</button>
         </div>
         <div class="main-home-imagen">
             <img src="https://static.vecteezy.com/system/resources/previews/018/931/431/original/cartoon-clapperboard-icon-png.png" width="400px"/>
@@ -40,27 +41,102 @@
     </div>
 
 
-    <div class="home-cartelera" id="home-cartelera">
+    <div class="home-cartelera ocultar" id="home-cartelera">
         <h2> Cartelera </h2>
         <div class="main-cartelera">
-            <div class="cartelera zone">
-              <img class="img-cartelera" src="https://es.web.img2.acsta.net/pictures/23/07/20/11/29/5479684.jpg" width="200px"/>
-              <p>Barbie</p>
-              <button class="ov-btn-slide-left" onclick="location.href='funciones.html'">Ver funciones</button>
-            </div>
-            <div class="cartelera zone">
-              <img class="img-cartelera" src="https://images2.prokal.co/webkp/file/berita/2023/06/21/c6ed767f1016f657fedd75cadde11751.jpg" width="200px"/>
-              <p>Flash</p>
-              <button class="ov-btn-slide-left" onclick="location.href='funciones.html'">Ver funciones</button>
-            </div>
-            <div class="cartelera zone">
-              <img class="img-cartelera" src="https://hips.hearstapps.com/hmg-prod/images/vengadores-la-era-de-ultro-n-1525787731.jpg" width="200px" />
-              <p>Avengers</p>
-              <button class="ov-btn-slide-left" onclick="location.href='funciones.html'">Ver funciones</button>
-            </div>
+        
         </div>
-      </div>
+    </div>
+    
+    <div class="home-funciones ocultar">
+            
+    </div>
 
+
+    <div class="home-sillas ocultar">
+        
+      <h3>Selecciona tus asientos</h3>
+
+      <ul class="showcase">
+          <li>
+              <div class="silla"></div>
+              <small>N/A</small>
+          </li>
+          <li>
+              <div class="silla seleccionada"></div>
+              <small>Seleccionada</small>
+          </li>
+          <li>
+              <div class="silla ocupada"></div>
+              <small>Ocupada</small>
+          </li>
+      </ul>
+      <div class="pantalla"></div>
+      <div class="container">
+          <div class="fila">
+              <div class="silla"></div>
+              <div class="silla seleccionada"></div>
+              <div class="silla seleccionada"></div>
+              <div class="silla seleccionada"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla ocupada"></div>
+              <div class="silla"></div>
+          </div>
+          <div class="fila">
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+          </div>
+          <div class="fila">
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+          </div>
+          <div class="fila">
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla ocupada"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+          </div>
+          <div class="fila">
+              <div class="silla"></div>
+              <div class="silla ocupada"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla ocupada"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+          </div>
+          <div class="fila">
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla ocupada"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+              <div class="silla"></div>
+          </div>
+      </div>
+      <p> sillas seleccionadas: 2, 3, 4</p>
+      <p> Total a pagar $30.000</p>
+    </div>
 
 
     <div class="footer">
@@ -75,6 +151,12 @@
             <p>Instagram</p>
             <p>WhatsApp</p>
             <p>Facebook</p>
+          </div>
+          <div class="footer-segmento">
+            <h6>Cartelera</h6>
+            <p>Barbie</p>
+            <p>Flash</p>
+            <p>Avengers</p>
           </div>
         
         </div>
