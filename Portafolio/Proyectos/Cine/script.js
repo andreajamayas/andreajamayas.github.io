@@ -121,7 +121,7 @@ function renderizarFuncionesDisponibles(evento) {
 
     //buscar funciones de esa pelicula en la base de datos
     let funcionesBuscadas = arrFunciones.filter( elm => elm.pelicula === pelicula);
-    console.log(funcionesBuscadas);
+    
 
     const miNodoImg = document.createElement('div');
     miNodoImg.classList.add('main-funciones-imagen');
@@ -146,7 +146,7 @@ function renderizarFuncionesDisponibles(evento) {
         miNodoFuncion.classList.add('ov-btn-slide-left');
         miNodoFuncion.innerText = elm.horaInicio;
         miNodoFuncion.setAttribute('marcador', elm.id);
-        console.log(elm.id);
+    
         miNodoFuncion.addEventListener("click", mostrarSillas);
         miNodo.appendChild(miNodoFuncion);
     })
@@ -162,6 +162,7 @@ let filas = 6;
 let columnas = 8;
 // se renderiza la sala de cine con las sillas
 function mostrarSillas(evento) {
+    mainConfirmacionReserva.classList.add('ocultar');
     contenedorSillas.innerHTML = "";
     let id = evento.target.getAttribute('marcador');
     let cont= 0;
@@ -174,8 +175,8 @@ function mostrarSillas(evento) {
             miNodoSilla.setAttribute('marcador1', id);
             miNodoSilla.setAttribute('marcador2', cont);
             miNodoSilla.addEventListener('click', seleccionSilla);
-            dbFunciones[id].arrayOcupantes[cont] = "";
-            if (dbFunciones[id].arraySillas[cont] == true){
+            arrFunciones[id].arrayOcupantes[cont] = "";
+            if (arrFunciones[id].arraySillas[cont] == true){
                 miNodoSilla.classList.add('ocupada');
             };
             miNodoFila.appendChild(miNodoSilla);
@@ -185,6 +186,7 @@ function mostrarSillas(evento) {
     };  
     mainSillas.classList.remove('ocultar');
     borrarDatosDeReservaNoConfirmada();
+    idFuncionReservada = id;
 };
 
 // cuando se selecciona otra función se borran los datos de las sillas seleccionadas previamente para no generar conflictos en los datos y mezclar reservas de funciones
@@ -193,18 +195,19 @@ function borrarDatosDeReservaNoConfirmada() {
     costoTotal = 0;
     textoSillasSeleccionadas.innerHTML = `Sillas releccionadas: N/A`;
     textoTotalPagar.innerHTML = `Total a pagar: $0`;
+    idFuncionReservada = null;
 }
 
 // cuando se selecciona una silla se agrega al "carrito" y cambia de color para diferenciarla, pero si la silla ya estaba selecciona se quita el color y se quita del carrito, si la silla ya está ocupada no ocurre nada
 function seleccionSilla(evento) {
     let id = evento.target.getAttribute('marcador1');
     let silla = evento.target.getAttribute('marcador2');
-    console.log(dbFunciones[id].arraySillas[silla], dbFunciones[id].arrayOcupantes[silla]);
-    if (dbFunciones[id].arraySillas[silla] == false && dbFunciones[id].arrayOcupantes[silla] == '') {
+
+    if (arrFunciones[id].arraySillas[silla] == false && arrFunciones[id].arrayOcupantes[silla] == '') {
         evento.target.classList.add('seleccionada');
         ocuparSilla(id, silla);
     }
-    else if (dbFunciones[id].arraySillas[silla] == false && dbFunciones[id].arrayOcupantes[silla] != "") {
+    else if (arrFunciones[id].arraySillas[silla] == false && arrFunciones[id].arrayOcupantes[silla] != "") {
         evento.target.classList.remove('seleccionada');
         desocuparSilla(id, silla);
     };
@@ -244,20 +247,47 @@ function renderizarResumenSillas(sillasReservadas, costoTotal) {
 };
 
 // se crea el evento que permite confirmar la compra de las boletas para la función seleccionada
+let botonConfirmarReserva = document.querySelector(".confirmar-reserva");
+let mainConfirmacionReserva = document.querySelector('.main-confirmacion');
+botonConfirmarReserva.addEventListener('click', confirmarReserva);
 
+function confirmarReserva() {
+    
+    if (costoTotal==0) {
+        alert('No se han seleccionado sillas a reservar');
+    }
+    else {
+        mainConfirmacionReserva.classList.remove('ocultar');
+        mainSillas.classList.add('ocultar');
+        mainConfirmacionReserva.innerHTML = `
+            <h4>Reserva Exitosa</h4>
+            <p>Película: ${pelicula}</p>
+            <p>Función: ${arrFunciones[idFuncionReservada].horaInicio}</p>
+            <p>Sillas reservadas: ${sillasReservadas}</p>
+            <p>Total pagado: $${costoTotal}</p>
+            `
+        ocuparSillasReservadas();
+    };
+}
 
+// se bloquean las sillas seleccionadas despues de que se confirma la reserva
+function ocuparSillasReservadas() {
 
-
+    sillasReservadas.forEach( (elm) => {
+        arrFunciones[idFuncionReservada].arraySillas[elm] = true;
+        arrFunciones[idFuncionReservada].cantSillasDisponibles--;
+        arrFunciones[idFuncionReservada].cantSillasOcupadas++;
+    })   
+};
 
 // Se declaran las variables del programa
     
 let arrFunciones = [];
-let nombre = "";
-let funcionReservada = 0;
 let sillasReservadas = [];
 let costoBoleta = 10;
 let costoTotal = 0;
-trueOrFalse = true;
+let pelicula = "";
+let idFuncionReservada = null;
 
 class Funciones {
     constructor({id, pelicula, horaInicio, horaFin, cantSillas, cantSillasDisponibles, cantSillasOcupadas, arraySillas, arrayOcupantes}){
