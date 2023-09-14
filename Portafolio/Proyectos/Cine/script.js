@@ -1,56 +1,59 @@
 
 // Aquí se cargan los datos principales con los que trabaja el programa, que son la cartelera y las funciones disponibles
 
-let dbFunciones = [
-    {
-        id : 0,
-        pelicula : "Barbie",
-        horaInicio : "5pm",
-        horaFin : "7pm",
-        cantSillas : 5,
-        cantSillasDisponibles: 3,
-        cantSillasOcupadas: 2,
-        arraySillas : [false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true],
-        arrayOcupantes : ["", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", ""]
-    },
-    {   
-        id : 1,
-        pelicula : "Avengers",
-        horaInicio : "1pm",
-        horaFin : "3pm",
-        cantSillas : 5,
-        cantSillasDisponibles: 5,
-        cantSillasOcupadas: 0,
-        arraySillas : [false, false, false, false, false, false, false, false, false, false, false, false,false, false, false, false, false, false,false, false, false, false, false, false,false, false, false, false, false, false,false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false ],
-        arrayOcupantes : ["", "", "", "", "", "", "", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", ""]
-    },
-    {
-        id : 2,
-        pelicula : "Flash",
-        horaInicio : "3pm",
-        horaFin : "5pm",
-        cantSillas : 5,
-        cantSillasDisponibles: 5,
-        cantSillasOcupadas: 0,
-        arraySillas : [false, false, false, false, false, false, false, false, false, false, false, false,false, false, false, false, false, false,false, false, false, false, false, false,false, false, false, false, false, false,false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false ],
-        arrayOcupantes : ["", "", "", "", "", "", "", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", ""]
-    }, 
-    {   
-        id : 3,
-        pelicula : "Flash",
-        horaInicio : "8pm",
-        horaFin : "10pm",
-        cantSillas : 5,
-        cantSillasDisponibles: 0,
-        cantSillasOcupadas: 0,
-        arraySillas : [false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true],
-        arrayOcupantes : ["", "", "", "", "", "", "", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", ""]
-    }
+// let dbFunciones = [
+//     {
+//         id : 0,
+//         pelicula : "Barbie",
+//         horaInicio : "5pm",
+//         horaFin : "7pm",
+//         cantSillas : 5,
+//         cantSillasDisponibles: 3,
+//         cantSillasOcupadas: 2,
+//         arraySillas : [false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true],
+//         arrayOcupantes : ["", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", ""]
+//     },
+//     {   
+//         id : 1,
+//         pelicula : "Avengers",
+//         horaInicio : "1pm",
+//         horaFin : "3pm",
+//         cantSillas : 5,
+//         cantSillasDisponibles: 5,
+//         cantSillasOcupadas: 0,
+//         arraySillas : [false, false, false, false, false, false, false, false, false, false, false, false,false, false, false, false, false, false,false, false, false, false, false, false,false, false, false, false, false, false,false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false ],
+//         arrayOcupantes : ["", "", "", "", "", "", "", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", ""]
+//     },
+//     {
+//         id : 2,
+//         pelicula : "Flash",
+//         horaInicio : "3pm",
+//         horaFin : "5pm",
+//         cantSillas : 5,
+//         cantSillasDisponibles: 5,
+//         cantSillasOcupadas: 0,
+//         arraySillas : [false, false, false, false, false, false, false, false, false, false, false, false,false, false, false, false, false, false,false, false, false, false, false, false,false, false, false, false, false, false,false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false ],
+//         arrayOcupantes : ["", "", "", "", "", "", "", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", ""]
+//     }, 
+//     {   
+//         id : 3,
+//         pelicula : "Flash",
+//         horaInicio : "8pm",
+//         horaFin : "10pm",
+//         cantSillas : 5,
+//         cantSillasDisponibles: 0,
+//         cantSillasOcupadas: 0,
+//         arraySillas : [false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true,false, true, true, false, false, true],
+//         arrayOcupantes : ["", "", "", "", "", "", "", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", "","", "", "", "", "", ""]
+//     }
 
-];
+// ];
 
-const enJSON = JSON.stringify(dbFunciones);
-// const dbFunciones = JSON.parse(enJSON);
+// const enJSON = JSON.stringify(dbFunciones);
+
+const enJSON = '[{"id":0,"pelicula":"Barbie","horaInicio":"5pm","horaFin":"7pm","cantSillas":5,"cantSillasDisponibles":3,"cantSillasOcupadas":2,"arraySillas":[false,true,true,false,false,true,false,true,true,false,false,true,false,true,true,false,false,true,false,true,true,false,false,true,false,true,true,false,false,true,false,true,true,false,false,true,false,true,true,false,false,true,false,true,true,false,false,true],"arrayOcupantes":["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""]},{"id":1,"pelicula":"Avengers","horaInicio":"1pm","horaFin":"3pm","cantSillas":5,"cantSillasDisponibles":5,"cantSillasOcupadas":0,"arraySillas":[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],"arrayOcupantes":["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""]},{"id":2,"pelicula":"Flash","horaInicio":"3pm","horaFin":"5pm","cantSillas":5,"cantSillasDisponibles":5,"cantSillasOcupadas":0,"arraySillas":[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],"arrayOcupantes":["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""]},{"id":3,"pelicula":"Flash","horaInicio":"8pm","horaFin":"10pm","cantSillas":5,"cantSillasDisponibles":0,"cantSillasOcupadas":0,"arraySillas":[false,true,true,false,false,true,false,true,true,false,false,true,false,true,true,false,false,true,false,true,true,false,false,true,false,true,true,false,false,true,false,true,true,false,false,true,false,true,true,false,false,true,false,true,true,false,false,true],"arrayOcupantes":["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""]}]'
+// console.log(enJSON);
+const dbFunciones = JSON.parse(enJSON);
 
 let arrPeliculas = [
     {
@@ -221,6 +224,8 @@ function ocuparSilla(numFuncion, numSilla) {
         // arrFunciones[numFuncion].cantSillasOcupadas++;
         arrFunciones[numFuncion].arrayOcupantes[numSilla] = 'usuario';
         sillasReservadas.push(numSilla);
+        localStorage.setItem('pelicula', pelicula);
+        localStorage.setItem('funcion', numFuncion);
         costoTotal += costoBoleta;
         renderizarResumenSillas(sillasReservadas, costoTotal);
 };
@@ -234,6 +239,9 @@ function desocuparSilla(numFuncion, numSilla) {
     sillasReservadas.splice(indiceSillaBorrar, 1);
     costoTotal = costoTotal - costoBoleta;
     renderizarResumenSillas(sillasReservadas, costoTotal);
+    if (costoTotal == 0){
+        localStorage.clear();
+    };
 };
 
 let textoSillasSeleccionadas = document.querySelector('.sillas-seleccionadas');
@@ -266,7 +274,8 @@ function confirmarReserva() {
             <p>Sillas reservadas: ${sillasReservadas}</p>
             <p>Total pagado: $${costoTotal}</p>
             `
-        ocuparSillasReservadas();
+            localStorage.clear();
+            ocuparSillasReservadas();
     };
 }
 
@@ -311,6 +320,13 @@ function pushFunciones() {
   }
 
 pushFunciones();
+
+let historialPelicula = localStorage.getItem('pelicula');
+let historialFuncion = localStorage.getItem('funcion');
+
+if (historialPelicula) {
+    alert(`Quieres continuar escogiendo tus asientos para ${historialPelicula} en la función de las ${arrFunciones[historialFuncion].horaInicio}`)
+};
 
 
 
