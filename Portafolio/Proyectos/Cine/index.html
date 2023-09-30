@@ -11,18 +11,15 @@
 <body id="gradient">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.html"><img class="logoNavBar" src="https://images.vexels.com/media/users/3/151999/isolated/preview/ef9bf8f8b4adb58f9597823a298283c4-icono-de-palomitas-de-maiz-dulce.png" width="30px"></a>
+          <a class="navbar-brand"><img class="logoNavBar" src="https://images.vexels.com/media/users/3/151999/isolated/preview/ef9bf8f8b4adb58f9597823a298283c4-icono-de-palomitas-de-maiz-dulce.png" width="30px"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#home-cartelera">Cartelera</a>
+                <a class="nav-link active irHome" aria-current="page">Home</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Contacto</a>
-              </li> 
             </ul>
           </div>
         </div>
@@ -34,12 +31,19 @@
             <h3>¡Encuentra tus estrenos favoritos!</h3>
             <p>Bienvenid@ a Cinemania, el destino definitivo para amantes del cine. Sumérgete en la experiencia cinematográfica definitiva en nuestras cómodas salas equipadas con lo último en tecnología de proyección y sonido. Ofrecemos una amplia selección de películas, desde emocionantes estrenos hasta clásicos atemporales. Reserva tus entradas en línea y prepárate para vivir momentos mágicos en la gran pantalla. ¡Tu entretenimiento está a solo unos clics de distancia!</p>
             <button class="ov-btn-slide-left habilitar-cartelera">Ver cartelera</button>
+            <button class="ov-btn-slide-left consumir-API">Seleccionar Avatar</button>
         </div>
         <div class="main-home-imagen">
             <img src="https://static.vecteezy.com/system/resources/previews/018/931/431/original/cartoon-clapperboard-icon-png.png" width="400px"/>
         </div>
     </div>
 
+    <div class="home-avatar ocultar" id="home-avatar">
+      <h2> Selecciona tu Avatar </h2>
+      <div class="contenedor-avatar">
+      
+      </div>
+    </div>
 
     <div class="home-cartelera ocultar" id="home-cartelera">
         <h2> Cartelera </h2>
@@ -112,6 +116,7 @@
     
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script.js"></script>
 </body>
 </html>

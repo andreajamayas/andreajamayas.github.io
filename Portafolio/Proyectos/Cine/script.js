@@ -119,7 +119,13 @@ function renderizarFuncionesDisponibles(evento) {
     funcionesDom.classList.remove('ocultar');
     mainCartelera.classList.add('ocultar');
     funcionesDom.innerHTML="";
-    pelicula = evento.target.getAttribute('marcador');
+    if (usarStorage==true){
+        pelicula=historialPelicula;
+        localStorage.clear();
+    }
+    else {
+        pelicula = evento.target.getAttribute('marcador');
+    };
     let buscado = arrPeliculas.find(elm => elm.nombre === pelicula);
 
     //buscar funciones de esa pelicula en la base de datos
@@ -167,7 +173,19 @@ let columnas = 8;
 function mostrarSillas(evento) {
     mainConfirmacionReserva.classList.add('ocultar');
     contenedorSillas.innerHTML = "";
-    let id = evento.target.getAttribute('marcador');
+    
+    let id = "";
+    if (usarStorage==true){
+         id=historialFuncion;
+         localStorage.clear();
+         usarStorage=false;
+    }
+    else {
+         id = evento.target.getAttribute('marcador');
+    };
+
+    
+
     let cont= 0;
     for (let i = 0; i < filas ; i++ ) {
         const miNodoFila = document.createElement('div');
@@ -265,6 +283,7 @@ function confirmarReserva() {
         alert('No se han seleccionado sillas a reservar');
     }
     else {
+          
         mainConfirmacionReserva.classList.remove('ocultar');
         mainSillas.classList.add('ocultar');
         mainConfirmacionReserva.innerHTML = `
@@ -276,6 +295,13 @@ function confirmarReserva() {
             `
             localStorage.clear();
             ocuparSillasReservadas();
+
+            Swal.fire({
+                title: '¡Reserva Exitosa!',
+                text: `Haz reservado correctamente tus entradas para ${pelicula}!`,
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            });
     };
 }
 
@@ -297,6 +323,7 @@ let costoBoleta = 10;
 let costoTotal = 0;
 let pelicula = "";
 let idFuncionReservada = null;
+let usarStorage=false;
 
 class Funciones {
     constructor({id, pelicula, horaInicio, horaFin, cantSillas, cantSillasDisponibles, cantSillasOcupadas, arraySillas, arrayOcupantes}){
@@ -325,9 +352,97 @@ let historialPelicula = localStorage.getItem('pelicula');
 let historialFuncion = localStorage.getItem('funcion');
 
 if (historialPelicula) {
-    alert(`Quieres continuar escogiendo tus asientos para ${historialPelicula} en la función de las ${arrFunciones[historialFuncion].horaInicio}`)
+    // alert(`Quieres continuar escogiendo tus asientos para ${historialPelicula} en la función de las ${arrFunciones[historialFuncion].horaInicio}`)
+    Swal.fire({
+        title: 'Ya estuviste por aquí 👀',
+        text: `Quieres continuar escogiendo tus asientos para ${historialPelicula} en la función ${arrFunciones[historialFuncion].horaInicio}`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, vamos!',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+            usarStorage=true;
+            mainCartelera.classList.add('ocultar');
+            mainHome.classList.add('ocultar');
+            renderizarFuncionesDisponibles();
+            mostrarSillas();
+
+        }
+      })
 };
 
 
 
-// initProgram();
+// consumiendo una api
+
+const logo = document.querySelector('.logoNavBar');
+const inicioPag = document.querySelector('.irHome');
+logo.addEventListener('click', inicializarPagPrincipal);
+inicioPag.addEventListener('click', inicializarPagPrincipal);
+function inicializarPagPrincipal() {
+    if (mainHome.classList.contains('ocultar')){
+        mainHome.classList.remove('ocultar');
+    };
+    if (!apiData.classList.contains('ocultar')){
+        apiData.classList.add('ocultar');
+    };
+    if (!mainCartelera.classList.contains('ocultar')){
+        mainCartelera.classList.add('ocultar');
+    };
+    if (!funcionesDom.classList.contains('ocultar')){
+        funcionesDom.classList.add('ocultar');
+    };
+    if (!mainSillas.classList.contains('ocultar')){
+        mainSillas.classList.add('ocultar');
+    };
+    if (!mainConfirmacionReserva.classList.contains('ocultar')){
+        mainConfirmacionReserva.classList.add('ocultar');
+    };
+};
+
+const apiButton = document.querySelector('.consumir-API');
+const apiData = document.querySelector('.home-avatar');
+const contenedorAvatares = document.querySelector('.contenedor-avatar');
+
+apiButton.addEventListener('click', traerPokemones);
+
+
+function callAPI(id) {
+    apiData.classList.remove('ocultar');
+    mainHome.classList.add('ocultar')
+    fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+        .then(res => res.json())
+        .then(data => {
+            crearPokemon(data);         
+        })
+        .catch(e => console.error(new Error(e)));
+};
+
+function traerPokemones(){
+
+    for (let i = 1; i <=12; i++){
+        callAPI(i);
+    };
+};
+
+function crearPokemon(pokemon){
+    const miNodoTarjeta = document.createElement('div');
+    const miNodoImg = document.createElement('img');
+    miNodoImg.setAttribute('src', pokemon.sprites.front_default);
+    miNodoImg.classList.add('tarjetaPokemon');
+    miNodoImg.classList.add('zone');
+    miNodoImg.addEventListener('click', cambiarAvatar);
+    miNodoTarjeta.appendChild(miNodoImg);
+    contenedorAvatares.appendChild(miNodoTarjeta);
+};
+
+function cambiarAvatar(evento){
+    logo.src=evento.target.src;
+};
+
+
+

@@ -306,7 +306,43 @@
 }
 
 
+.home-avatar {
+  width: 100%;
+  height: auto;
+  min-height: 80vh;
+  text-align: center;
+  background-color: #EEEDED;
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url(https://static.vecteezy.com/system/resources/previews/001/270/574/non_2x/green-color-comic-book-pop-art-strip-radial-backdrop-vector.jpg); */
+  background-size: cover;
+  padding: 20px;
 
+}
+
+.home-avatar h2 {
+  color: #900C3F;
+  padding-top: 20px;
+  font-family: 'Didact Gothic', sans-serif;
+}
+
+.contenedor-avatar {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      padding: 5px;
+}
+
+.tarjetaPokemon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: white;
+  font-family: fantasy;
+  background-size: cover;
+  height: 30vh;
+  margin: 30px;
+  border-radius: 5px;
+}
   
  
   
@@ -400,6 +436,12 @@
     -o-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px, inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
     box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px, inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
   }
+
+  .irHome, .logoNavBar {
+    cursor: pointer;
+  }
+
+
 
 
   .ocultar {
