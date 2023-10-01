@@ -13,7 +13,7 @@
     color: black !important;
   }
   .container-fluid a:hover {
-    color: #1A5D1A !important;
+    color: rgb(68,120,69) !important;
   }
   
   .navbar-expand-lg, .bg-body-tertiary {
@@ -33,7 +33,7 @@
     width: 100%;
     height: auto;
     min-height: 50vh;
-    background-color: #263A29;
+    background-color: rgb(68,120,69);
   }
   
   .derechos {
@@ -78,7 +78,7 @@
 }
 
 .quienes-somos h3{
-    color: #1a5d1a;
+    color: rgb(68,120,69);
 }
 
 .main-home-description {
@@ -86,12 +86,12 @@
 }
 
 .main-home-description h1 {
-    color: #82CD47;
+    color: rgb(74,166,81);
     font-family: 'Didact Gothic', sans-serif;
 }
 
 .main-home-description h3 {
-    color: #1A5D1A;
+    color: rgb(68,120,69);
 }
 
 
